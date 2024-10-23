@@ -15,6 +15,12 @@
                         </a>
                     </h2>
                     <p class="text-gray-600 dark:text-gray-300 mt-2">{{ $note->content }}</p>
+                    <p class="text-gray-500 dark:text-gray-400 mt-2">
+                        Tags:
+                        @foreach ($note->tags as $tag)
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium mr-1 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{{ $tag->name }}</span>
+                        @endforeach
+                    </p>
                     <div class="mt-4">
                         <a href="{{ route('notes.edit', $note->id) }}" class="inline-block bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600">
                             Edit

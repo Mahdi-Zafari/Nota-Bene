@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Note;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +17,8 @@ class NoteController extends Controller
 
     public function create()
     {
-        return view('notes.create');
+        $tags = Tag::all();
+        return view('notes.create', compact('tags'));
     }
 
     public function store(Request $request)
@@ -24,9 +26,11 @@ class NoteController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
+            'tags' => 'array',
         ]);
 
-        Auth::user()->notes()->create($request->only('title', 'content'));
+        $note = Auth::user()->notes()->create($request->only('title', 'content'));
+        $note->tags()->attach($request->tags);
 
         return redirect()->route('notes.index')->with('success', 'Note created successfully.');
     }
@@ -38,7 +42,8 @@ class NoteController extends Controller
 
     public function edit(Note $note)
     {
-        return view('notes.edit', compact('note'));
+        $tags = Tag::all();
+        return view('notes.edit', compact('note', 'tags'));
     }
 
     public function update(Request $request, Note $note)
@@ -46,9 +51,11 @@ class NoteController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
+            'tags' => 'array',
         ]);
 
         $note->update($request->only('title', 'content'));
+        $note->tags()->sync($request->tags);
 
         return redirect()->route('notes.index')->with('success', 'Note updated successfully.');
     }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NoteController;
+use App\Http\Controllers\TagController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -24,6 +25,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/notes/{note}/edit', [NoteController::class, 'edit'])->name('notes.edit');
     Route::put('/notes/{note}', [NoteController::class, 'update'])->name('notes.update');
     Route::delete('/notes/{note}', [NoteController::class, 'destroy'])->name('notes.destroy');
+
+    Route::get('/tags', [TagController::class, 'index'])->name('tags.index');
+    Route::get('/tags/create', [TagController::class, 'create'])->name('tags.create');
+    Route::post('/tags', [TagController::class, 'store'])->name('tags.store');
+    Route::delete('/tags/{tag}', [TagController::class, 'destroy'])->name('tags.destroy');
 });
 
 require __DIR__.'/auth.php';
