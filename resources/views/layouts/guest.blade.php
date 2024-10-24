@@ -16,11 +16,11 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans text-gray-900 antialiased">
+    <body class="font-sans antialiased bg-gradient-to-r from-gray-50 via-indigo-50 to-purple-50 dark:bg-gray-900 text-gray-900 dark:text-gray-200">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
             <div>
                 <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                    <img src="{{ asset('images/app_logo.png') }}" alt="{{ config('app.name', 'Nota Bene') }}" class="w-24 h-24 rounded-full">
                 </a>
             </div>
 
