@@ -31,12 +31,20 @@
 
     <!-- Buttons -->
     <div class="flex justify-center space-x-4">
-        <a href="{{ route('login') }}" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg transition-all duration-300">
-            Login
-        </a>
-        <a href="{{ route('register') }}" class="text-blue-500 hover:text-blue-700 px-6 py-2 rounded-lg transition-all duration-300">
-            Register
-        </a>
+        @guest
+            <a href="{{ route('login') }}" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg transition-all duration-300">
+                Login
+            </a>
+            <a href="{{ route('register') }}" class="text-blue-500 hover:text-blue-700 px-6 py-2 rounded-lg transition-all duration-300">
+                Register
+            </a>
+        @endguest
+
+        @auth
+            <a href="{{ route('dashboard') }}" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg transition-all duration-300">
+                Dashboard
+            </a>
+        @endauth
     </div>
 </div>
 </body>

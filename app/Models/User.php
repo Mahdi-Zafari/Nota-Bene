@@ -61,4 +61,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Task::class);
     }
+
+    /**
+     * Get the count of notes for the user.
+     */
+    public function noteCount()
+    {
+        return $this->notes()->count();
+    }
 }

@@ -44,9 +44,15 @@ class NoteController extends Controller
             'title' => 'required|string|max:255',
             'content' => 'required|string',
             'tags' => 'array',
+            'is_public' => 'boolean'
         ]);
 
-        $note = Auth::user()->notes()->create($request->only('title', 'content'));
+        $note = Auth::user()->notes()->create([
+            'title' => $request->title,
+            'content' => $request->content,
+            'is_public' => $request->input('is_public', false),
+        ]);
+
         $note->tags()->attach($request->tags);
 
         return redirect()->route('notes.index')->with('success', 'Note created successfully.');
@@ -69,9 +75,15 @@ class NoteController extends Controller
             'title' => 'required|string|max:255',
             'content' => 'required|string',
             'tags' => 'array',
+            'is_public' => 'boolean'
         ]);
 
-        $note->update($request->only('title', 'content'));
+        $note->update([
+            'title' => $request->title,
+            'content' => $request->content,
+            'is_public' => $request->input('is_public', false),
+        ]);
+
         $note->tags()->sync($request->tags);
 
         return redirect()->route('notes.index')->with('success', 'Note updated successfully.');
@@ -81,5 +93,17 @@ class NoteController extends Controller
     {
         $note->delete();
         return redirect()->route('notes.index')->with('success', 'Note deleted successfully.');
+    }
+
+    public function dashboard()
+    {
+        $user = Auth::user();
+
+        $publicNotes = Note::where('is_public', true)->orderBy('created_at', 'desc')->get();
+
+        $noteCount = $user->noteCount();
+        $taskCount = $user->tasks()->count();
+
+        return view('dashboard', compact('publicNotes', 'noteCount', 'taskCount'));
     }
 }

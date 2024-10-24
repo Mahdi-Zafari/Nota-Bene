@@ -9,7 +9,8 @@ class Note extends Model
     protected $fillable = [
         'user_id',
         'title',
-        'content'
+        'content',
+        'is_public'
     ];
 
     public function user()

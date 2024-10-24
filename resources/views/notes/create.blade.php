@@ -27,6 +27,14 @@
                 <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">Hold down the Ctrl (Windows) / Command (Mac) button to select multiple tags.</p>
             </div>
 
+            <div>
+                <label for="is_public" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Visibility:</label>
+                <select name="is_public" id="is_public" class="block w-full border border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 focus:border-indigo-500 focus:ring focus:ring-indigo-200 dark:bg-gray-700 dark:text-white transition duration-150 ease-in-out">
+                    <option value="0" selected>Private</option>
+                    <option value="1">Public</option>
+                </select>
+            </div>
+
             <div class="flex justify-end space-x-4">
                 <a href="{{ route('notes.index') }}" class="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600 transition duration-150 ease-in-out">
                     Cancel
