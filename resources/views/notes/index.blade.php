@@ -3,9 +3,24 @@
 @section('content')
     <div class="container mx-auto px-4 py-6">
         <h1 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Your Notes</h1>
+
+        <form action="{{ route('notes.index') }}" method="GET" class="mb-4">
+            <input type="text" name="search" placeholder="Search..." class="border rounded px-2 py-1" />
+
+            <select name="tag" class="border rounded px-2 py-1">
+                <option value="">All</option>
+                @foreach ($tags as $tag)
+                    <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                @endforeach
+            </select>
+
+            <button type="submit" class="bg-blue-500 text-white rounded px-4 py-1">Filter</button>
+        </form>
+
         <a href="{{ route('notes.create') }}" class="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 mb-4">
             Create a new note
         </a>
+
         <ul class="space-y-4">
             @foreach ($notes as $note)
                 <li class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-4">

@@ -3,6 +3,20 @@
 @section('content')
     <div class="container mx-auto px-4 py-6">
         <h1 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Your Tasks</h1>
+
+        <form action="{{ route('tasks.index') }}" method="GET" class="mb-4">
+            <input type="text" name="search" placeholder="Search..." class="border rounded px-2 py-1" />
+
+            <select name="status" class="border rounded px-2 py-1">
+                <option value="">All</option>
+                <option value="pending">Pending</option>
+                <option value="in_progress">In Progress</option>
+                <option value="completed">Completed</option>
+            </select>
+
+            <button type="submit" class="bg-blue-500 text-white rounded px-4 py-1">Filter & Search</button>
+        </form>
+
         <a href="{{ route('tasks.create') }}" class="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 mb-4">
             Create a new task
         </a>

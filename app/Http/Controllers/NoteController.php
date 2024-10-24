@@ -9,10 +9,27 @@ use Illuminate\Support\Facades\Auth;
 
 class NoteController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $notes = Auth::user()->notes()->latest()->get();
-        return view('notes.index', compact('notes'));
+        $query = $request->input('search');
+        $tagId = $request->input('tag');
+
+        $notes = Auth::user()->notes()
+            ->when($query, function ($queryBuilder) use ($query) {
+                return $queryBuilder->where('title', 'like', '%' . $query . '%')
+                    ->orWhere('content', 'like', '%' . $query . '%');
+            })
+            ->when($tagId, function ($queryBuilder) use ($tagId) {
+                return $queryBuilder->whereHas('tags', function ($tagQuery) use ($tagId) {
+                    $tagQuery->where('tags.id', $tagId);
+                });
+            })
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        $tags = Tag::all();
+
+        return view('notes.index', compact('notes', 'tags'));
     }
 
     public function create()

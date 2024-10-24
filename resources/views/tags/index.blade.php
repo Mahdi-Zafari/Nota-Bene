@@ -3,6 +3,12 @@
 @section('content')
     <div class="container mx-auto px-4 py-6">
         <h1 class="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100">Tags</h1>
+
+        <form action="{{ route('tags.index') }}" method="GET" class="mb-4">
+            <input type="text" name="search" placeholder="Search tags..." class="border rounded px-2 py-1" />
+            <button type="submit" class="bg-blue-500 text-white rounded px-4 py-1">Search</button>
+        </form>
+
         <a href="{{ route('tags.create') }}" class="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 mb-4">
             Create a new tag
         </a>

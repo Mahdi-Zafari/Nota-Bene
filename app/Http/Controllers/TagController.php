@@ -7,9 +7,15 @@ use Illuminate\Http\Request;
 
 class TagController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $tags = Tag::all();
+        $search = $request->input('search');
+
+        $tags = Tag::when($search, function ($queryBuilder) use ($search) {
+            return $queryBuilder->where('name', 'like', '%' . $search . '%');
+        })
+            ->get();
+
         return view('tags.index', compact('tags'));
     }
 

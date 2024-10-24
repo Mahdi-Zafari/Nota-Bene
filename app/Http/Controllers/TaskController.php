@@ -8,9 +8,22 @@ use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $tasks = Auth::user()->tasks()->orderBy('created_at', 'desc')->get();
+        $query = Auth::user()->tasks();
+
+        if ($request->has('search') && $request->search != '') {
+            $query->where(function ($q) use ($request) {
+                $q->where('title', 'like', '%' . $request->search . '%')
+                    ->orWhere('description', 'like', '%' . $request->search . '%');
+            });
+        }
+
+        if ($request->has('status') && $request->status != '') {
+            $query->where('status', $request->status);
+        }
+
+        $tasks = $query->orderBy('created_at', 'desc')->get();
         return view('tasks.index', compact('tasks'));
     }
 
