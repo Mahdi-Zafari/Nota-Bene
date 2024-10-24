@@ -29,18 +29,26 @@
 > [!IMPORTANT]
 > 
 > 1. **Task Management**
->    - Create, update, and delete tasks
->    - Categorize tasks by status (Pending, In Progress, Completed)
-> 
+>  - Create, update, and delete tasks with ease.
+>  - Categorize tasks by status: **Pending**, **In Progress**, **Completed**.
+>  - Set due dates to manage deadlines effectively.
+>
 > 2. **User Interface**
->    - Clean and customizable user interface
->    - Dark mode support
-> 
-> 3. **Task Deadlines**
->    - Set due dates for tasks
-> 
+>    - Intuitive and customizable user interface for seamless navigation.
+>    - **Dark mode** support for improved visibility in low-light conditions.
+>    - Display user statistics to keep track of notes and tasks.
+>
+> 3. **Notes Management**
+>    - Create public and private notes to enhance task tracking.
+>    - Search functionality to filter notes by title or content quickly.
+>
 > 4. **Tags**
->    - Add tags to tasks for easy filtering and management
+>    - Add and manage tags for tasks and notes to facilitate easy filtering.
+>    - Organize tasks and notes effectively by using relevant tags.
+>
+> 5. **Responsive Design**
+>    - Fully responsive design to ensure usability on various devices.
+>    - Optimized for both desktop and mobile experiences.
 
 ## Installation Guide
 To install and run **Nota Bene**, follow these steps:
