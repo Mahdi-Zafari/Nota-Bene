@@ -10,7 +10,13 @@ class Task extends Model
         'user_id',
         'title',
         'description',
-        'is_completed'
+        'is_completed',
+        'status',
+        'due_date'
+    ];
+
+    protected $casts = [
+        'due_date' => 'date',
     ];
 
     public function user()
