@@ -86,8 +86,5 @@ Make sure your system meets the following requirements:
    php artisan serve
    ```
 
-## Contributing
-We welcome contributions from the community. Please see our [Contributing Guidelines](CONTRIBUTING.md) for more details on how to get involved.
-
 ## License
 This project is licensed under the **MIT License**. Please see the [LICENSE](./LICENSE) file for more details.
