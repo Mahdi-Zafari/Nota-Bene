@@ -18,7 +18,6 @@
 - [Installation Guide](#installation-guide)  
   - [Prerequisites](#prerequisites)  
   - [Installation](#installation)  
-- [Contributing](#contributing)  
 - [License](#license)  
 
 ## Nota Bene Introduction
