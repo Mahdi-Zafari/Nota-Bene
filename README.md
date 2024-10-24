@@ -18,6 +18,7 @@
 - [Installation Guide](#installation-guide)  
   - [Prerequisites](#prerequisites)  
   - [Installation](#installation)  
+- [Author](#author)
 - [License](#license)  
 
 ## Nota Bene Introduction
@@ -84,6 +85,11 @@ Make sure your system meets the following requirements:
    ```bash
    php artisan serve
    ```
+
+## Author
+**Nota Bene** was developed by [Mahdi Zafari](https://github.com/Mahdi-Zafari).
+
+Feel free to reach out for any questions, feedback, or contributions.
 
 ## License
 This project is licensed under the **MIT License**. Please see the [LICENSE](./LICENSE) file for more details.
